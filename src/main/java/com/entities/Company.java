@@ -10,9 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The {@code Company} class defines a company that may have multiple employers. Each company is identifiable by a unique name.
+ * The <tt>Company</tt> class defines a company that may have multiple employers. Each company is identifiable by a unique name.
  * <p>
- * Two {@code Company} objects are compared by their names.
+ * Two <tt>Company</tt> objects are compared by their names.
+ * <p>
+ * There might be several {@link Person} objects that have a relationship with this <tt>Company</tt>.
  */
 @EqualsAndHashCode
 public class Company implements Node, Comparable<Company> {
@@ -27,10 +29,23 @@ public class Company implements Node, Comparable<Company> {
         this.name = name;
     }
 
+    /**
+     * Adds a {@link Person} object into a local list of {@link Node} objects.
+     * <p>
+     * Each <tt>Person</tt> object added to the list, have a specific relationship with this <tt>Company</tt>.
+     * <p>
+     * In other words, all the <tt>Person</tt> objects that has a relationship with this <tt>Company</tt> might be viewed
+     * as <b>neighbours</b> in the graph associated to the social network.
+     *
+     * @param person The newly added <tt>Person</tt>
+     */
     void addPersonRelationship(Person person) {
         personRelationships.add(person);
     }
 
+    /**
+     * @return A list of all the {@link Node} objects that have a relationship with this <tt>Company</tt>
+     */
     @Override
     public List<Node> getNeighbours() {
         return new ArrayList<>(personRelationships);

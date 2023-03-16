@@ -1,7 +1,6 @@
 package com;
 
-import com.algorithms.BiconnectedComponentsAlgorithm;
-import com.algorithms.CutVerticesAlgorithm;
+import com.graph.TarjanAlgorithm;
 import com.entities.Company;
 import com.entities.Designer;
 import com.entities.Person;
@@ -24,18 +23,17 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         Person person1 = new Designer("Alex", 50);
-        Person person2 = new Person("Vaflist");
+        Person person2 = new Person("Andrei");
+        Person person3 = new Programmer("Ioan", 50);
         Company comp1 = new Company("Amazon");
         Company comp2 = new Company("Google");
-        Person person3 = new Programmer("Nicu", 50);
-        Person person4 = new Person("Nicu");
 
-        person1.addRelationships(comp1, "boss");
-        person1.addRelationships(person2, "pretenar");
-        person1.addRelationships(person3, "dusman");
-        person2.addRelationships(comp1, "lucrator");
-        person2.addRelationships(comp2, "kidala");
-        person3.addRelationships(comp1, "Whut");
+        person1.addRelationships(comp1, "employer");
+        person1.addRelationships(person2, "good-friends");
+        person1.addRelationships(person3, "roommates");
+        person2.addRelationships(comp1, "worker");
+        person2.addRelationships(comp2, "best-employer");
+        person3.addRelationships(comp1, "worst-employer");
 
         Network network = new Network();
         network.addNode(person1);
@@ -43,14 +41,12 @@ public class Main {
         network.addNode(person2);
         network.addNode(comp2);
         network.addNode(person3);
-        network.addNode(person4);
         network.printNetwork();
 
-        CutVerticesAlgorithm cutVerticesAlgorithm = new CutVerticesAlgorithm(network);
-        BiconnectedComponentsAlgorithm biconnectedComponentsAlgorithm = new BiconnectedComponentsAlgorithm(network);
+        TarjanAlgorithm tarjanAlgorithm = new TarjanAlgorithm(network);
 
-        List<Node> cutVertices = cutVerticesAlgorithm.getCutVertices();
-        List<List<Node>> biconnectedComponents = biconnectedComponentsAlgorithm.getBiconnectedComponents();
+        List<Node> cutVertices = tarjanAlgorithm.getCutPoints();
+        List<List<Node>> biconnectedComponents = tarjanAlgorithm.getBiconnectedComponents();
 
         printCutVertices(cutVertices);
         printBiconnectedComponents(biconnectedComponents);
@@ -73,7 +69,7 @@ public class Main {
         int rowId = 1;
         for (List<Node> component : biconnectedComponents) {
             System.out.print(rowId + ". ");
-            for(Node node : component) {
+            for (Node node : component) {
                 System.out.print(node.getName() + " ");
             }
             System.out.println();
