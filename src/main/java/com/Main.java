@@ -1,30 +1,35 @@
 package com;
 
-import com.graph.TarjanAlgorithm;
 import com.entities.Company;
 import com.entities.Designer;
 import com.entities.Person;
 import com.entities.Programmer;
 import com.graph.Network;
 import com.graph.Node;
+import com.graph.TarjanAlgorithm;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
- * Compulsory implementation from Laboratory 3.
+ * Homework and Bonus implementation from Laboratory 3.
  * <p>
- * A {@link java.util.List} is created and four {@link Node} objects are inserted to it.
+ * Three {@link Person} objects (or an inherited object) and two {@link Company} objects are created.
  * <p>
- * The {@code Node} interface is implemented by the {@link Company} and {@link Person} classes.
+ * Several relationships are added between them using the {@code Person.addRelationships()} method.
  * <p>
- * Each element from the list is printed on the screen using the getName() method.
+ * A {@link Network} object is created and all the {@link Node} objects created above are added to the network.
+ * <p>
+ * Every node along with its neighbours in the network are printed on the screen, ordered increasingly by their importance.
+ * <p>
+ * Tarjan Algorithm is executed on the <tt>Network</tt> instance and the <b>Articulation Points</b> and <b>Biconnected Components</b>
+ * are printed on the screen.
  */
 public class Main {
     public static void main(String[] args) {
-        Person person1 = new Designer("Alex", 50);
-        Person person2 = new Person("Andrei");
-        Person person3 = new Programmer("Ioan", 50);
+        Date sampleBirthDate = new GregorianCalendar(2002, Calendar.MAY, 11).getTime();
+        Person person1 = new Designer("Alex", sampleBirthDate, 0);
+        Person person2 = new Person("Andrei", sampleBirthDate);
+        Person person3 = new Programmer("Ioan", sampleBirthDate, 50);
         Company comp1 = new Company("Amazon");
         Company comp2 = new Company("Google");
 

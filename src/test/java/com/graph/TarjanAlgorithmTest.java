@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import java.util.*;
 
 class TarjanAlgorithmTest {
-
     @Test
     public void shouldReturnZeroArticulationPoints_whenNetworkContainsZeroNodes() {
         // arrange
@@ -26,7 +25,7 @@ class TarjanAlgorithmTest {
     @Test
     public void shouldReturnZeroArticulationPoint_whenNetworkContainsOneNode() {
         // arrange
-        Person person1 = new Person("Ioan");
+        Person person1 = new Person("Ioan", new GregorianCalendar(2002, Calendar.MAY, 11).getTime());
         Network network = new Network();
         network.addNode(person1);
         TarjanAlgorithm tarjanAlgorithm = new TarjanAlgorithm(network);
@@ -42,8 +41,9 @@ class TarjanAlgorithmTest {
     @Test
     public void shouldReturnOneArticulationPoint_whenNetworkContainsThreeNodesAndTwoEdges() {
         // arrange
-        Person person1 = new Programmer("Ioan", 3);
-        Person person2 = new Programmer("Alex", 0);
+        Date sampleBirthDate = new GregorianCalendar(2002, Calendar.MAY, 11).getTime();
+        Person person1 = new Programmer("Ioan", sampleBirthDate, 50);
+        Person person2 = new Programmer("Alex", sampleBirthDate, 0);
         Company company = new Company("Amazon");
         person1.addRelationships(company, "employer");
         person2.addRelationships(company, "employer");
@@ -66,8 +66,9 @@ class TarjanAlgorithmTest {
     @Test
     public void shouldReturnTwoBiconnectedComponents_whenNetworkContainsThreeNodesAndTwoEdges() {
         // arrange
-        Person person1 = new Programmer("Ioan", 3);
-        Person person2 = new Programmer("Alex", 0);
+        Date sampleBirthDate = new GregorianCalendar(2002, Calendar.MAY, 11).getTime();
+        Person person1 = new Programmer("Ioan", sampleBirthDate, 50);
+        Person person2 = new Programmer("Alex", sampleBirthDate, 0);
         Company company = new Company("Amazon");
         person1.addRelationships(company, "employer");
         person2.addRelationships(company, "employer");

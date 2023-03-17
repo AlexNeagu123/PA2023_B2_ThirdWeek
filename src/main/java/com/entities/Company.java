@@ -21,7 +21,6 @@ public class Company implements Node, Comparable<Company> {
     @Setter
     @Getter
     private String name;
-
     @EqualsAndHashCode.Exclude
     private final List<Node> personRelationships = new ArrayList<>();
 

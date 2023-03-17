@@ -3,10 +3,7 @@ package com.entities;
 import com.graph.Node;
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * The <tt>Person</tt> class defines a person that works at a company. Each person is identifiable by a unique name.
@@ -23,17 +20,23 @@ public class Person implements Node, Comparable<Person> {
     @Getter
     @Setter
     private String name;
+    @Getter
+    @Setter
+    @EqualsAndHashCode.Exclude
+    private Date birthDate;
 
     @EqualsAndHashCode.Exclude
     private final Map<Node, String> relationships = new HashMap<>();
 
     /**
-     * Constructs a <tt>Person</tt> that is uniquely defined by a name.
+     * Constructs a <tt>Person</tt> that is uniquely defined by a name and has a specified birth date.
      *
      * @param name The name of the newly created <tt>Person</tt>
+     * @param birthDate The date of birth of the newly created <tt>Person</tt>
      */
-    public Person(String name) {
+    public Person(String name, Date birthDate) {
         this.name = name;
+        this.birthDate = birthDate;
     }
 
     /**

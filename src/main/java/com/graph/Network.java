@@ -88,7 +88,6 @@ public class Network {
      * @return A list containing the ids of all the neighbours of the <tt>Node</tt> associated with {@code nodeId}.
      */
     List<Integer> getNeighboursOfNodeId(int nodeId) {
-
         return new ArrayList<>(relationships.get(nodeId));
     }
 

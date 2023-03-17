@@ -3,6 +3,8 @@ package com.entities;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.util.Date;
+
 /**
  * The <tt>Designer</tt> class defines a special type of {@link Person}, that possesses an additional data member representing
  * the artistic talent.
@@ -18,8 +20,8 @@ public class Designer extends Person {
      * @param name The name of the newly created <tt>Designer</tt>
      */
 
-    public Designer(String name) {
-        super(name);
+    public Designer(String name, Date birthDate) {
+        super(name, birthDate);
         this.artisticTalent = 0;
     }
 
@@ -30,8 +32,8 @@ public class Designer extends Person {
      * @param name           The name of the newly created <tt>Designer</tt>
      * @param artisticTalent An integer that describes the artistic talent of this <tt>Designer</tt>
      */
-    public Designer(String name, int artisticTalent) {
-        this(name);
+    public Designer(String name, Date birthDate, int artisticTalent) {
+        this(name, birthDate);
         if (artisticTalent > 0) {
             this.artisticTalent = artisticTalent;
         }
