@@ -35,5 +35,5 @@ This repository contains solutions for:
 :heavy_check_mark: Identified maximal 2-connected blocks of the network (biconnected components).
   - _:file_folder: src/main/java/com/graph/TarjanAlgorithm.java_
 
-:heavy_check_mark: Created JUnit tests for the algorithms.
+:heavy_check_mark: Created JUnit tests for these algorithms.
   - _:file_folder: src/test/java/com/graph/TarjanAlgorithmTest.java_
